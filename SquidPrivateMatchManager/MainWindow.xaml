@@ -5,8 +5,94 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SquidPrivateMatchManager"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="Splatoon 2 プライベートマッチ勝利数管理" Height="650" Width="900"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:wpf="clr-namespace:MaterialDesignThemes.Wpf;assembly=MaterialDesignThemes.Wpf"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="13"
+        TextOptions.TextFormattingMode="Ideal"
+        TextOptions.TextRenderingMode="Auto"
+        Background="{DynamicResource MaterialDesignPaper}"
+        FontFamily="{DynamicResource MaterialDesignFont}">
     <Grid>
-        
+        <StackPanel Margin="0,10,0,0">
+            <!--<materialDesign:Card Padding="10" Margin="16">
+                <TextBlock Style="{DynamicResource MaterialDesignTitleTextBlock}">Splatoon 2 プライベートマッチ勝利数管理</TextBlock>
+            </materialDesign:Card>-->
+            <DockPanel>
+                <StackPanel Width="300">
+                    <TextBlock Style="{DynamicResource MaterialDesignTitleTextBlock}" Margin="10">参加者</TextBlock>
+                    <DockPanel>
+                        <TextBox x:Name="EntryNameTextBox" HorizontalAlignment="Left" Margin="10" Width="150" Style="{StaticResource MaterialDesignFloatingHintTextBox}" wpf:HintAssist.Hint="Name"/>
+                        <Button x:Name="Registry" Content="Registry" HorizontalAlignment="Left" Margin="10" Width="100" Style="{StaticResource MaterialDesignRaisedAccentButton}"/>
+                    </DockPanel>
+                    <DataGrid Name="Entrants" HorizontalAlignment="Left" Margin="5" CanUserAddRows="False" AutoGeneratingColumn="Entrants_AutoGeneratingColumn"/>
+                </StackPanel>
+                <StackPanel>
+                    <TextBlock Style="{DynamicResource MaterialDesignTitleTextBlock}" Margin="5">対戦情報</TextBlock>
+                    <DockPanel>
+                        <StackPanel Width="300">
+                            <DockPanel>
+                                <Label Content="ルール" Margin="5,0,20,0"/>
+                                <ComboBox Name="Rule" HorizontalAlignment="Left" Width="150"/>
+                            </DockPanel>
+                        </StackPanel>
+                        <StackPanel Width="300">
+                            <DockPanel>
+                                <Label Content="ステージ" Margin="5,0,10,0"/>
+                                <ComboBox Name="Stage" HorizontalAlignment="Left" Width="150"/>
+                            </DockPanel>
+                        </StackPanel>
+                    </DockPanel>
+                    <DockPanel>
+                        <StackPanel Width="300" Margin="0,10,0,0">
+                            <TextBlock Style="{DynamicResource MaterialDesignTitleTextBlock}" Margin="5" Foreground="#e91e63">アルファチーム</TextBlock>
+                            <DockPanel>
+                                <Label Content="No.1" Margin="5,0,20,0"/>
+                                <ComboBox Name="Alpha1" HorizontalAlignment="Left" Width="150"/>
+                            </DockPanel>
+                            <DockPanel>
+                                <Label Content="No.2" Margin="5,0,20,0"/>
+                                <ComboBox Name="Alpha2" HorizontalAlignment="Left" Width="150"/>
+                            </DockPanel>
+                            <DockPanel>
+                                <Label Content="No.3" Margin="5,0,20,0"/>
+                                <ComboBox Name="Alpha3" HorizontalAlignment="Left" Width="150"/>
+                            </DockPanel>
+                            <DockPanel>
+                                <Label Content="No.4" Margin="5,0,20,0"/>
+                                <ComboBox Name="Alpha4" HorizontalAlignment="Left" Width="150"/>
+                            </DockPanel>
+                            <Button Content="Win" HorizontalAlignment="Left" Margin="65,10,0,0" Width="150" />
+                        </StackPanel>
+                        <StackPanel Width="300" Margin="0,10,0,0">
+                            <TextBlock Style="{DynamicResource MaterialDesignTitleTextBlock}" Margin="5" Foreground="#CDDC39">ブラボーチーム</TextBlock>
+                            <DockPanel>
+                                <Label Content="No.1" Margin="5,0,20,0"/>
+                                <ComboBox Name="Bravo1" HorizontalAlignment="Left" Width="150"/>
+                            </DockPanel>
+                            <DockPanel>
+                                <Label Content="No.2" Margin="5,0,20,0"/>
+                                <ComboBox Name="Bravo2" HorizontalAlignment="Left" Width="150"/>
+                            </DockPanel>
+                            <DockPanel>
+                                <Label Content="No.3" Margin="5,0,20,0"/>
+                                <ComboBox Name="Bravo3" HorizontalAlignment="Left" Width="150"/>
+                            </DockPanel>
+                            <DockPanel>
+                                <Label Content="No.4" Margin="5,0,20,0"/>
+                                <ComboBox Name="Bravo4" HorizontalAlignment="Left" Width="150"/>
+                            </DockPanel>
+                            <Button Content="Win" HorizontalAlignment="Left" Margin="65,10,0,0" Width="150" Style="{StaticResource MaterialDesignRaisedAccentButton}"/>
+                        </StackPanel>
+                    </DockPanel>
+                    <StackPanel>
+                        <TextBlock Style="{DynamicResource MaterialDesignTitleTextBlock}" Margin="5,20,0,0">対戦履歴</TextBlock>
+                        <DataGrid Name="BattleHistories" HorizontalAlignment="Left" Width="550" Margin="5" CanUserAddRows="False" AutoGeneratingColumn="ResultHistory_AutoGeneratingColumn"/>
+                    </StackPanel>
+                </StackPanel>
+            </DockPanel>
+        </StackPanel>
     </Grid>
 </Window>
