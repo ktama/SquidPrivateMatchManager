@@ -18,13 +18,20 @@ namespace SquidPrivateMatchManager
         }
         public string Rule { get; set; }
         public string Stage { get; set; }
-        public string Winner1 { get; set; }
-        public string Winner2 { get; set; }
-        public string Winner3 { get; set; }
-        public string Winner4 { get; set; }
-        public string Loser1 { get; set; }
-        public string Loser2 { get; set; }
-        public string Loser3 { get; set; }
-        public string Loser4 { get; set; }
+        public Team Winners { get; set; }
+        public Team Losers { get; set; }
+        public string WinnersNames { get { return Winners.MembersNames; } }
+        public string LosersNames { get { return Losers.MembersNames; } }
+
+        public BattleHistory() { }
+
+        public BattleHistory(DateTime date, string rule, string stage, Team winners, Team losers)
+        {
+            this.Date = date;
+            this.Rule = rule;
+            this.Stage = stage;
+            this.Winners = winners;
+            this.Losers = losers;
+        }
     }
 }

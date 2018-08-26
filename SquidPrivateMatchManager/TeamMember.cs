@@ -6,12 +6,14 @@ using System.Threading.Tasks;
 
 namespace SquidPrivateMatchManager
 {
-    public class Entrant
+    public class TeamMember
     {
         public string Name { get; set; }
+        // Weaponなども持てるようにクラス作成
 
-        public uint Wins { get; set; }
-
-        public bool IsBattleMember { get; set; } = false;
+        public TeamMember(string name)
+        {
+            this.Name = name;
+        }
     }
 }
