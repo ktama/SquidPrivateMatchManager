@@ -24,7 +24,7 @@
                 <StackPanel Width="250">
                     <TextBlock Style="{DynamicResource MaterialDesignTitleTextBlock}" Margin="10">参加者</TextBlock>
                     <DockPanel>
-                        <TextBox x:Name="EntryNameTextBox" HorizontalAlignment="Left" Margin="10" Width="100" Style="{StaticResource MaterialDesignFloatingHintTextBox}" wpf:HintAssist.Hint="Name"/>
+                        <TextBox x:Name="EntryNameTextBox" HorizontalAlignment="Left" Margin="10" Width="100" Style="{StaticResource MaterialDesignFloatingHintTextBox}" wpf:HintAssist.Hint="Name" KeyDown="EntryNameTextBox_KeyDown"/>
                         <Button x:Name="Registry" Content="Registry" HorizontalAlignment="Left" Margin="10" Width="100" Style="{StaticResource MaterialDesignRaisedAccentButton}" Click="Registry_Click"/>
                     </DockPanel>
                     <DataGrid ItemsSource="{Binding Entrants, Mode=OneWay}" IsReadOnly="True" Name="EntrantsDataGrid" HorizontalAlignment="Left" Margin="5" CanUserAddRows="False" AutoGeneratingColumn="Entrants_AutoGeneratingColumn"/>

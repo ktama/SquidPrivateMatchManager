@@ -1,5 +1,6 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 
 namespace SquidPrivateMatchManager
 {
@@ -91,7 +92,7 @@ namespace SquidPrivateMatchManager
         private void Registry_Click(object sender, RoutedEventArgs e)
         {
             this.viewModel.RegistEntrants(this.EntryNameTextBox.Text);
-            UpdateEntrants();
+            //UpdateEntrants();
         }
 
         private void AlphaWinButton_Click(object sender, RoutedEventArgs e)
@@ -104,5 +105,12 @@ namespace SquidPrivateMatchManager
             this.viewModel.RegistoryBattleHistory(this.RuleComboBox.Text, this.StageComboBox.Text, this.GetBravoTeam(), this.GetAlphaTeam());
         }
 
+        private void EntryNameTextBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Return)
+            {
+                this.viewModel.RegistEntrants(this.EntryNameTextBox.Text);
+            }
+        }
     }
 }

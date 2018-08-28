@@ -167,6 +167,7 @@ namespace SquidPrivateMatchManager
         public void RegistEntrants(string name)
         {
             Entrants.Add(new Entrant() { Name = name, Wins = 0 });
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Members)));
         }
 
         public void RegistoryBattleHistory(string rule, string stage, Team winTeam, Team loseTeam)
