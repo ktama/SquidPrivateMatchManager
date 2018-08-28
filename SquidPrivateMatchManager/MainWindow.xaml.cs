@@ -10,15 +10,11 @@ namespace SquidPrivateMatchManager
     public partial class MainWindow : Window
     {
         private MainWindowViewModel viewModel = new MainWindowViewModel();
+
         public MainWindow()
         {
             InitializeComponent();
             this.DataContext = this.viewModel;
-            // テスト用データ
-
-
-            //this.BattleHistories.ItemsSource = viewModel.BattleHistories;
-            //UpdateEntrants();
         }
 
         private Team GetAlphaTeam()
@@ -29,18 +25,6 @@ namespace SquidPrivateMatchManager
         private Team GetBravoTeam()
         {
             return new Team(Bravo1ComboBox.Text, Bravo2ComboBox.Text, Bravo3ComboBox.Text, Bravo4ComboBox.Text);
-        }
-
-        private void UpdateEntrants()
-        {
-            this.Alpha1ComboBox.ItemsSource = viewModel.Members;
-            this.Alpha2ComboBox.ItemsSource = viewModel.Members;
-            this.Alpha3ComboBox.ItemsSource = viewModel.Members;
-            this.Alpha4ComboBox.ItemsSource = viewModel.Members;
-            this.Bravo1ComboBox.ItemsSource = viewModel.Members;
-            this.Bravo2ComboBox.ItemsSource = viewModel.Members;
-            this.Bravo3ComboBox.ItemsSource = viewModel.Members;
-            this.Bravo4ComboBox.ItemsSource = viewModel.Members;
         }
 
         private void Entrants_AutoGeneratingColumn(object sender, DataGridAutoGeneratingColumnEventArgs e)
@@ -92,7 +76,6 @@ namespace SquidPrivateMatchManager
         private void Registry_Click(object sender, RoutedEventArgs e)
         {
             this.viewModel.RegistEntrants(this.EntryNameTextBox.Text);
-            //UpdateEntrants();
         }
 
         private void AlphaWinButton_Click(object sender, RoutedEventArgs e)
