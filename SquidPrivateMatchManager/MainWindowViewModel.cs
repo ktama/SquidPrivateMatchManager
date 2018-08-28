@@ -1,18 +1,41 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SquidPrivateMatchManager
 {
-    public class MainWindowViewModel
+    public class MainWindowViewModel : INotifyPropertyChanged
     {
-        public ObservableCollection<Entrant> Entrants { get; set; } = new ObservableCollection<Entrant>();
-        public ObservableCollection<BattleHistory> BattleHistories { get; set; } = new ObservableCollection<BattleHistory>();
+        private ObservableCollection<Entrant> entrants = new ObservableCollection<Entrant>();
+        private ObservableCollection<BattleHistory> battleHistories = new ObservableCollection<BattleHistory>();
 
-        public ObservableCollection<string> Rules { get; set; } = new ObservableCollection<string>()
+        public ObservableCollection<Entrant> Entrants
+        {
+            get
+            {
+                return entrants;
+            }
+            set
+            {
+                entrants = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Entrants)));
+            }
+        }
+        public ObservableCollection<BattleHistory> BattleHistories
+        {
+            get
+            {
+                return battleHistories;
+            }
+            set
+            {
+                battleHistories = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(BattleHistories)));
+            }
+        }
+
+        public ObservableCollection<string> Rules { get; } = new ObservableCollection<string>()
         {
             "ナワバリ",
             "ガチエリア",
@@ -21,7 +44,7 @@ namespace SquidPrivateMatchManager
             "ガチアサリ",
         };
 
-        public ObservableCollection<string> Stages { get; set; } = new ObservableCollection<string>()
+        public ObservableCollection<string> Stages { get; } = new ObservableCollection<string>()
         {
             "バッテラストリート",
             "フジツボスポーツクラブ",
@@ -58,6 +81,88 @@ namespace SquidPrivateMatchManager
 
         public Team AlphaTeam { get; set; }
         public Team BravoTeam { get; set; }
+
+        public MainWindowViewModel()
+        {
+            #region テストデータ
+            //Entrants.Add(new Entrant() { Name = "アオリ", Wins = 1 });
+            //Entrants.Add(new Entrant() { Name = "ホタル", Wins = 2 });
+            //Entrants.Add(new Entrant() { Name = "アタリメ", Wins = 3 });
+            //Entrants.Add(new Entrant() { Name = "３号", Wins = 4 });
+            //Entrants.Add(new Entrant() { Name = "ヒメ", Wins = 5 });
+            //Entrants.Add(new Entrant() { Name = "イイダ", Wins = 6 });
+            //Entrants.Add(new Entrant() { Name = "４号", Wins = 7 });
+            //Entrants.Add(new Entrant() { Name = "８号", Wins = 8 });
+
+            //BattleHistories.Add(new BattleHistory()
+            //{
+            //    Date = new DateTime(2018, 1, 1, 09, 00, 00),
+            //    Rule = "ガチヤグラ",
+            //    Stage = "ホッケふ頭",
+            //    Winners = new Team("アオリ", "ホタル", "アタリメ", "３号"),
+            //    Losers = new Team("ヒメ", "イイダ", "４号", "８号")
+            //});
+            //BattleHistories.Add(new BattleHistory()
+            //{
+            //    Date = new DateTime(2018, 1, 1, 10, 00, 00),
+            //    Rule = "ガチヤグラ",
+            //    Stage = "ホッケふ頭",
+            //    Winners = new Team("アオリ", "ホタル", "ヒメ", "イイダ"),
+            //    Losers = new Team("アタリメ", "３号", "４号", "８号")
+            //});
+            //BattleHistories.Add(new BattleHistory()
+            //{
+            //    Date = new DateTime(2018, 1, 1, 11, 00, 00),
+            //    Rule = "ガチヤグラ",
+            //    Stage = "ホッケふ頭",
+            //    Winners = new Team("アオリ", "ホタル", "ヒメ", "イイダ"),
+            //    Losers = new Team("アタリメ", "３号", "４号", "８号")
+            //});
+            //BattleHistories.Add(new BattleHistory()
+            //{
+            //    Date = new DateTime(2018, 1, 1, 12, 00, 00),
+            //    Rule = "ガチヤグラ",
+            //    Stage = "ホッケふ頭",
+            //    Winners = new Team("アオリ", "ホタル", "ヒメ", "イイダ"),
+            //    Losers = new Team("アタリメ", "３号", "４号", "８号")
+            //});
+            //BattleHistories.Add(new BattleHistory()
+            //{
+            //    Date = new DateTime(2018, 1, 1, 13, 00, 00),
+            //    Rule = "ガチヤグラ",
+            //    Stage = "ホッケふ頭",
+            //    Winners = new Team("アオリ", "ホタル", "ヒメ", "イイダ"),
+            //    Losers = new Team("アタリメ", "３号", "４号", "８号")
+            //});
+            //BattleHistories.Add(new BattleHistory()
+            //{
+            //    Date = new DateTime(2018, 1, 1, 14, 00, 00),
+            //    Rule = "ガチヤグラ",
+            //    Stage = "ホッケふ頭",
+            //    Winners = new Team("アオリ", "ホタル", "ヒメ", "イイダ"),
+            //    Losers = new Team("アタリメ", "３号", "４号", "８号")
+            //});
+            //BattleHistories.Add(new BattleHistory()
+            //{
+            //    Date = new DateTime(2018, 1, 1, 15, 00, 00),
+            //    Rule = "ガチヤグラ",
+            //    Stage = "ホッケふ頭",
+            //    Winners = new Team("アオリ", "ホタル", "ヒメ", "イイダ"),
+            //    Losers = new Team("アタリメ", "３号", "４号", "８号")
+            //});
+            //BattleHistories.Add(new BattleHistory()
+            //{
+            //    Date = new DateTime(2018, 1, 1, 16, 00, 00),
+            //    Rule = "ガチヤグラ",
+            //    Stage = "ホッケふ頭",
+            //    Winners = new Team("アオリ", "ホタル", "ヒメ", "イイダ"),
+            //    Losers = new Team("アタリメ", "３号", "４号", "８号")
+            //});
+            #endregion
+
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
 
         public void RegistEntrants(string name)
         {

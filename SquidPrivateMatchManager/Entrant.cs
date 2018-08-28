@@ -1,17 +1,40 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel;
 
 namespace SquidPrivateMatchManager
 {
-    public class Entrant
+    public class Entrant : INotifyPropertyChanged
     {
-        public string Name { get; set; }
+        private string name;
+        private uint wins;
 
-        public uint Wins { get; set; }
+        public string Name
+        {
+            get
+            {
+                return name;
+            }
+            set
+            {
+                name = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Name)));
+            }
+        }
+
+        public uint Wins
+        {
+            get
+            {
+                return wins;
+            }
+            set
+            {
+                wins = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Wins)));
+            }
+        }
 
         public bool IsBattleMember { get; set; } = false;
+
+        public event PropertyChangedEventHandler PropertyChanged;
     }
 }
